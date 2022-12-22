@@ -10,14 +10,27 @@
  * Check servie worker.
  */
 if (navigator.serviceWorker) {
-  navigator.serviceWorker.register("/ICS2O-PWA-Test/sw.js", {
-    scope: "/ICS2O-PWA-Test/",
+  navigator.serviceWorker.register("/ICS20-6-04-JS/sw.js", {
+    scope: "/ICS20-6-04-JS/",
   })
 }
+"use strict"
 
-/**
- * This function displays an alert.
- */
-function myButtonClicked() {
-  document.getElementById("hello-world").innerHTML = "<p>Hello, World!</p>"
+window.onload = function() {
+  // this calculates volume of a pyramid
+
+  const params = new URLSearchParams(document.location.search)
+
+  // input
+  const radius = params.get('r')
+  console.log(radius)
+
+  // process
+  const radius_cubed = radius ** 3
+  const volume = ((4 * Math.PI * radius_cubed) / 3).toFixed(2)
+  const dimensions = "<ul>\n<li>radius = " + radius 
+
+  // output
+  document.getElementById('dimensions').innerHTML = dimensions
+  document.getElementById('volume').innerHTML = 'volume is: ' + volume + ' mm³'
 }
